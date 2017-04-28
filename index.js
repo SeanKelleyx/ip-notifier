@@ -13,9 +13,9 @@ getIP(function (err, ip) {
 	slack.setWebhook(slack_props.webhook_url);
  
 	slack.webhook({
-	  channel: "#server-ip",
-	  username: "ip-bot",
-	  text: "Good morning, KCL FTW. The current ip for the SideHustleDashboardServer is: " + ip
+	  channel: slack_props.channel_name,
+	  username: slack_props.bot_name,
+	  text: slack_props.message + ip
 	}, function(err, response) {
 		if(err){
 			log.error("There was an error posting server ip to slack :: " + JSON.stringify(err, null, 4));
